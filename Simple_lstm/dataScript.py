@@ -1,10 +1,7 @@
 from random import random
 from typing import Sequence
 from numpy import array
-# from numpy.core.arrayprint import DatetimeFormat
 from datetime import datetime
-
-# from IKT442.Simple_lstm.dataingest import ingest
 
 def split_sequence(data, n_steps):
     X = list()
@@ -36,7 +33,6 @@ def getData(topLen=48, bottomLen=24, topStation="Netlandsnes", bottomStation="fa
     top = split_sequence(tops, topLen)
     bottom = split_sequence(bottoms, bottomLen)
 
-
     for t in top:
         for b in bottom:
             if datetime.strptime(t[-1].split(":")[0],"%Y-%m-%dT%H") == datetime.strptime(b[0].split(":")[0],"%Y-%m-%dT%H"):
@@ -46,8 +42,6 @@ def getData(topLen=48, bottomLen=24, topStation="Netlandsnes", bottomStation="fa
             print("Loaded data: " + str(len(y)))
     
     print("Loading completed")
-
-    #split training and testing
     print("making training and testing")
     trainingX = list()
     trainingY = list()
@@ -61,7 +55,4 @@ def getData(topLen=48, bottomLen=24, topStation="Netlandsnes", bottomStation="fa
             trainingX.append(a)
             trainingY.append(b)
 
-
-
     return array(trainingX), array(trainingY), array(testingX), array(testingY)
-# getData()
