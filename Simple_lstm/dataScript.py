@@ -25,6 +25,7 @@ def getData(topLen=48, bottomLen=24, topStation="Netlandsnes", bottomStation="fa
     tops = open("dataset/"+topStation+"_no_NaN").readlines()
     tops.pop(0)
     tops = tops[len(tops)-2000:]
+    print(tops)
 
     bottoms = open("dataset/"+bottomStation+"_no_NaN").readlines()
     bottoms.pop(0)

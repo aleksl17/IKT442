@@ -13,7 +13,7 @@ from dataScript import getData
 n_features = 1
 n_steps = 48
 n_outputs = 24
-epochs = 10
+epochs = 100
 t_split = 0.8
 
 trainingX, trainingY, testingX, testingY = getData(topLen=n_steps,bottomLen=n_outputs)
@@ -63,10 +63,10 @@ totalError = []
 for i in range(len(testingY)):
 	error = 0
 	for y, yHat in zip(testingY[i], pred[i]):
-		error += abs(y - yHat)
+		error += abs((y - yHat)/y)
 	
 	totalError.append(error/24)
 	print(error/n_outputs)
 
 print("Training Completed")
-print(sum(totalError)/len(totalError))
+print(sum(totalError)/len(totalError)*100)
