@@ -25,11 +25,12 @@ def getData(topLen=48, bottomLen=24, topStation="Netlandsnes", bottomStation="fa
     tops = open("dataset/"+topStation+"_no_NaN").readlines()
     tops.pop(0)
     tops = tops[len(tops)-2000:]
-    print(tops)
 
     bottoms = open("dataset/"+bottomStation+"_no_NaN").readlines()
     bottoms.pop(0)
-    bottoms = bottoms[len(bottoms)-2000:]
+
+    # tops = tops[len(tops)-2000:]
+    # bottoms = bottoms[len(bottoms)-2000:]
 
     top = split_sequence(tops, topLen)
     bottom = split_sequence(bottoms, bottomLen)
@@ -37,6 +38,7 @@ def getData(topLen=48, bottomLen=24, topStation="Netlandsnes", bottomStation="fa
     for t in top:
         for b in bottom:
             if datetime.strptime(t[-1].split(":")[0],"%Y-%m-%dT%H") == datetime.strptime(b[0].split(":")[0],"%Y-%m-%dT%H"):
+                #check if weird behavior and add muiltiple instances, augmentation?
                 X.append(removeDateTime(t))
                 y.append(removeDateTime(b))
         if len(y)%100 == 0:
