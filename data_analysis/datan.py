@@ -36,9 +36,9 @@ for filename in os.listdir(dataDirectory):
     y.clear()
 
 # All
-plt.plot(allX, allY)
-plt.xlabel("Datetime")
-plt.ylabel("Milliamp")
-plt.xticks(rotation=30)
-plt.tight_layout()
-plt.savefig(outputDirectory + "/all")
+# plt.plot(allX, allY)
+# plt.xlabel("Datetime")
+# plt.ylabel("Milliamp")
+# plt.xticks(rotation=30)
+# plt.tight_layout()
+# plt.savefig(outputDirectory + "/all")
