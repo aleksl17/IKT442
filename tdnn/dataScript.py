@@ -21,7 +21,7 @@ def removeDateTime(data):
 
     return X
 
-def getData(topLen=24, bottomLen=24, topStation="Netlandsnes", bottomStation="Faret", t_split=0.5):
+def getData(topLen=48, bottomLen=24, topStation="Netlandsnes", bottomStation="Faret", t_split=0.8):
     print("Loading data from "+topStation+" to "+bottomStation)
     X, y = list(), list()
     tops = open("./data/"+topStation).readlines()
@@ -60,15 +60,15 @@ def getData(topLen=24, bottomLen=24, topStation="Netlandsnes", bottomStation="Fa
             trainingX.append(a)
             trainingY.append(b)
 
-    array(trainingX)
-    array(trainingY)
-    array(testingX)
-    array(testingY)
+    trainingX= numpy.array(trainingX)
+    trainingY= numpy.array(trainingY)
+    testingX= numpy.array(testingX)
+    testingY= numpy.array(testingY)
 
-    trainingX = trainingX[:900]
-    trainingY = trainingY[:900]
-    testingX = testingX[:900]
-    testingY = testingY[:900]
+    # trainingX = trainingX[:900]
+    # trainingY = trainingY[:900]
+    # testingX = testingX[:900]
+    # testingY = testingY[:900]
 
     # trainingX = trainingX.reshape((trainingX.shape[0], trainingX.shape[1], 1))
     # testingX = testingX.reshape((testingX.shape[0], testingX.shape[1], 1))
