@@ -6,16 +6,14 @@ class TDNNModel:
     def __init__(self):
         self.model = None
         self.epochs = 5
-        self.n_steps = 48
-        self.n_outputs = 24
+        self.n_steps = 24
         self.trainX = []
         self.trainY = []
         self.evalX = []
         self.evalY = []
 
-    def create_model(self, n_steps, n_outputs):
+    def create_model(self, n_steps):
         self.n_steps = n_steps
-        self.n_outputs = n_outputs
         self.model = Sequential()
         self.model.add(TDNNLayer([-2, 2], sub_sampling=False, input_shape=(n_steps, 1)))
         self.model.add(TDNNLayer([-1, 2], sub_sampling=True))
@@ -28,7 +26,7 @@ class TDNNModel:
         self.trainX = trainX
         self.trainY = trainY
         self.epochs = epochs
-        self.model(trainX, trainY, epochs=epochs)
+        self.model.fit(trainX, trainY, epochs=epochs)
         # data = np.random.random((3200, self.input_dim, 1))
         # truth = np.round(np.random.random((3200, self.input_dim - 21)))
         # self.model.fit(data, truth, epochs=20)
