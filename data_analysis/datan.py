@@ -31,7 +31,7 @@ for filename in os.listdir(dataDirectory):
     plt.xticks(rotation=30)
     plt.tight_layout()
     plt.savefig(outputDirectory + "/" + filename, dpi=600)
-    plt.clf()
+    # plt.clf()
     x.clear()
     y.clear()
 
